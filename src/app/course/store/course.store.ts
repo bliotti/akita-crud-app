@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { EntityStore, StoreConfig } from "@datorama/akita";
-import { EntityState } from "@datorama/akita/lib/types";
-import { Course } from "../model/course.model";
+import { Injectable } from '@angular/core';
+import { EntityStore, StoreConfig } from '@datorama/akita';
+import { EntityState } from '@datorama/akita/lib/types';
+import { Course } from '../model/course.model';
 
 export interface CourseState extends EntityState<Course, string> {
   areCoursesLoaded: boolean;
@@ -14,9 +14,9 @@ export function createInitialState(): CourseState {
 }
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
-@StoreConfig({ name: "course" })
+@StoreConfig({ name: 'course' })
 export class CourseStore extends EntityStore<CourseState> {
   constructor() {
     super(createInitialState());
