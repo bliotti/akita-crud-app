@@ -1,14 +1,15 @@
-import { CourseQuery } from "../../store/course.query";
-import { CourseService } from "./../../services/course.service";
-import { CourseState } from "../../store/course.store";
-import { tap, switchMap, filter } from "rxjs/operators";
-import { Course } from "./../../model/course.model";
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
+import { CourseQuery } from '../../store/course.query';
+import { CourseService } from './../../services/course.service';
+import { CourseState } from '../../store/course.store';
+import { tap, switchMap, filter } from 'rxjs/operators';
+import { Course } from './../../model/course.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { debug } from 'util';
 
 @Component({
-  selector: "app-courses-list",
-  templateUrl: "./courses-list.component.html",
+  selector: 'app-courses-list',
+  templateUrl: './courses-list.component.html',
 })
 export class CoursesListComponent implements OnInit, OnDestroy {
   courseToBeUpdated: Course;
@@ -36,6 +37,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
         filter((areCoursesLoaded) => !areCoursesLoaded),
         switchMap((areCoursesLoaded) => {
           if (!areCoursesLoaded) {
+            // tslint:disable-next-line: no-debugger
+            debugger;
             return this.courseService.getAllCourses();
           }
         })
